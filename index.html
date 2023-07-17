@@ -33,12 +33,15 @@
       <div class="upper2">
         <div class="todo-header">
           <p style="color: hsl(0, 0%, 98%);">T O D O</p>
-          <img src="/images/icon-sun.svg" alt="">
-        </div>
+          <button style="background: none;" id="mode-toggle" onclick="toggleMode()">
+            <img id="mode-icon" src="/images/icon-moon.svg" alt="">
+          </button>
+          
+                  </div>
         <form id="todo-form" class="inputform" action="post">
           <div style="display: flex; align-items: center; padding: 2px; background-color: rgb(80, 79, 79); border-radius: 5px;">
             <div id="radio">
-              <input type="checkbox" id="checkBox">
+              <input type="checkbox" id="checkBox" placeholder="Your Todo">
             </div>
             <input type="text" id="new-todo" placeholder="Create a new todo">
           </div>
@@ -49,7 +52,9 @@
       <div class="lower1">
         <div class="lowerinfo"></div>
         <div class="lower-footer">
-          <div class="left-items"></div>
+          <div class="left-items" id="left-items-count">
+            <p>Number of items left</p>
+          </div>          
           <div class="center-items">
             <button class="filter" data-filter="all">All</button>
             <button class="filter" data-filter="active">Active</button>
@@ -60,7 +65,7 @@
           </div>
         </div>
       </div>
-      <button id="reorder-button" style="font-family: 'Josefin Sans', sans-serif; margin-left: 95vh;">Drag and drop to reorder list</button>
+      <button id="reorder-button">Drag and drop to reorder list</button>
     </div>
   </div>
 

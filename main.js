@@ -1,31 +1,43 @@
 document.addEventListener('DOMContentLoaded', function () {
     const todoForm = document.getElementById('todo-form');
     const todoInput = document.getElementById('new-todo');
+    const todoCheckbox = document.getElementById('checkBox');
     const todoList = document.querySelector('.lowerinfo');
     const filterButtons = document.querySelectorAll('.filter');
     const clearCompletedButton = document.getElementById('clear-completed');
     const reorderButton = document.getElementById('reorder-button');
+    const leftItemsCount = document.getElementById('left-items-count');
 
     let todos = [];
 
+    // Add event listener for form submission
     todoForm.addEventListener('submit', function (event) {
         event.preventDefault();
         const todoText = todoInput.value.trim();
         if (todoText !== '') {
-            const isCompleted = document.getElementById('checkBox').checked;
+            
+            const isCompleted = todoCheckbox.checked;
             addTodoItem(todoText, isCompleted);
             todoInput.value = '';
+            todoCheckbox.checked = false; // Reset the checkbox
+            updateLeftItemsCount();
         }
+
+        localStorage.setItem('todos', JSON.stringify(todos));
     });
 
+    // Add event listener for todo item completion toggle
     todoList.addEventListener('click', function (event) {
         const clickedElement = event.target;
         if (clickedElement.classList.contains('checkbox')) {
             const todoId = clickedElement.closest('.todo-item').dataset.id;
             toggleTodoCompletion(todoId);
+            updateLeftItemsCount();
         }
+        localStorage.setItem('todos', JSON.stringify(todos));
     });
 
+    // Add event listeners for filter buttons
     filterButtons.forEach(function (button) {
         button.addEventListener('click', function () {
             const filter = button.dataset.filter;
@@ -33,15 +45,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-
+    // Add event listener for clear completed button
     clearCompletedButton.addEventListener('click', function () {
         clearCompletedTodos();
+        updateLeftItemsCount();
     });
 
-
-    reorderButton.addEventListener('click', function () {
-
-    });        //code to handle drag and drop reordering
 
     function addTodoItem(text, isCompleted) {
         const todoItem = {
@@ -101,4 +110,27 @@ document.addEventListener('DOMContentLoaded', function () {
             renderTodoItem(todoItem);
         });
     }
+
+    function updateLeftItemsCount() {
+        const uncompletedTodos = todos.filter(function (todoItem) {
+            return !todoItem.completed;
+        });
+        leftItemsCount.textContent = uncompletedTodos.length;
+    }
 });
+
+function toggleMode() {
+    var body = document.body;
+    var modeIcon = document.getElementById("mode-icon");
+  
+    body.classList.toggle("dark-mode");
+    body.classList.toggle("light-mode");
+  
+    if (body.classList.contains("dark-mode")) {
+      modeIcon.src = "/images/icon-moon.svg";
+      
+    } else {
+      modeIcon.src = "/images/icon-sun.svg";
+    }
+  }
+  
