@@ -34,16 +34,16 @@
         <div class="todo-header">
           <p style="color: hsl(0, 0%, 98%);">T O D O</p>
           <button style="background: none;" id="mode-toggle" onclick="toggleMode()">
-            <img id="mode-icon" src="/images/icon-moon.svg" alt="">
+            <img id="mode-icon" src="/images/icon-moon.svg" alt="" style="height: 3vh;">
           </button>
-          
-                  </div>
+        </div>
         <form id="todo-form" class="inputform" action="post">
-          <div style="display: flex; align-items: center; padding: 2px; background-color: rgb(80, 79, 79); border-radius: 5px;">
+          <div>
             <div id="radio">
               <input type="checkbox" id="checkBox" placeholder="Your Todo">
+
+              <input type="text" id="new-todo" placeholder="Create a new todo">
             </div>
-            <input type="text" id="new-todo" placeholder="Create a new todo">
           </div>
         </form>
       </div>
@@ -54,7 +54,7 @@
         <div class="lower-footer">
           <div class="left-items" id="left-items-count">
             <p>Number of items left</p>
-          </div>          
+          </div>
           <div class="center-items">
             <button class="filter" data-filter="all">All</button>
             <button class="filter" data-filter="active">Active</button>

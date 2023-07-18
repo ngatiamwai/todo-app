@@ -2,46 +2,50 @@
     margin: 0;
     padding: 0;
 }
-body{
+
+body {
     font-family: 'Josefin Sans', sans-serif;
 }
+
 .upper {
     background-image: url('./images/bg-desktop-dark.jpg');
     height: 40vh;
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .upper2 {
-    padding-top: 15vh;
-    padding-right: 70vh;
-    padding-left: 70vh;
+    padding-top: 20vh;
+    width: 35vw;
+    /* padding-bottom: -5vh; */
 }
 
 .todo-header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-content: center;
     align-items: center;
-    gap: 80%;
-    padding-bottom: 5%;
-    padding-right: 5%;
-    padding-left: 5%;
+}
+
+.inputform {
+    height: 5vh;
 }
 
 #radio {
     background-color: hsl(233, 14%, 35%);
     border: none;
     color: hsl(233, 14%, 35%);
-    padding: 10px;
+    /* padding: 10px; */
+    display: flex;
+    align-items: center;
 }
 
 input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
+    /* width: 20px;
+    height: 20px; */
     clip-path: circle(46% at 50% 50%);
 }
 
@@ -56,22 +60,29 @@ input[type="text"] {
 .lower {
     background-color: hsl(235, 24%, 19%);
     height: 60vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .lower1 {
     height: 50vh;
     width: 35vw;
-    margin-left: 70vh;
+    margin-top: -10vh;
     background-color: hsl(233, 14%, 35%);
 }
-.lowerinfo{
+
+.lowerinfo {
     border-bottom: 2px solid hsl(0, 0%, 98%);
     height: 90%;
 }
+
 .lower-footer {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    flex-wrap: wrap;
     color: hsl(0, 0%, 98%);
     height: 10%;
 }
@@ -91,23 +102,30 @@ input[type="text"] {
 .lower p {
     display: flex;
 }
-button{
+
+button {
     background-color: hsl(233, 14%, 35%);
     text-decoration: none;
     color: hsl(0, 0%, 98%);
     border: none;
     font-family: 'Josefin Sans', sans-serif;
 }
-.lower button{
+
+.lower button {
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
     text-decoration: none;
-    color: hsl(0, 0%, 98%);
+    color: hsl(234, 39%, 85%);
     border: none;
     font-family: 'Josefin Sans', sans-serif;
 }
+
 .todo-item {
     display: flex;
     align-items: center;
-    padding: 3vh;
+    padding: 2vh;
+    border-bottom: 1px solid hsl(233, 11%, 84%);
 }
 
 .todo-item .checkbox {
@@ -118,28 +136,54 @@ button{
     text-decoration: line-through;
     color: hsl(0, 0%, 60%);
 }
-#reorder-button{
+
+#reorder-button {
     margin-top: 5vh;
-    font-family: 'Josefin Sans', sans-serif; 
-    margin-left: 95vh; 
+    font-family: 'Josefin Sans', sans-serif;
     background: none;
 }
-button:hover{
+
+button:hover {
     cursor: pointer;
+    color: hsl(235, 94%, 33%);
 }
-body.dark-mode {
-    background-color: #222;
-    color: #fff;
-    background-image: url('/images/bg-desktop-dark.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  
-  body.light-mode {
+
+.light-mode {
     background-color: #fff;
     color: #000;
-    background-image: url('/images/bg-desktop-light.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  
+}
+
+
+@media screen and (max-width: 800px) {
+    .upper {
+        background-image: url('./images/bg-mobile-dark.jpg');
+        height: 40vh;
+    }
+
+    .upper2 {
+        padding-top: 15vh;
+        width: 70vw;
+    }
+
+    .lower1 {
+        height: 50vh;
+        width: 70vw;
+        margin-top: -20vh;
+        background-color: hsl(233, 14%, 35%);
+    }
+
+    .center-items {
+        height: 5vh;
+        width: 70vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 35rem;
+        background-color: hsl(233, 14%, 35%);
+    }
+
+    #reorder-button {
+        margin-top: 15vh;
+    }
+}
